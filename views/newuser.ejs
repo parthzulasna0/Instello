@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link href="/assets/images/favicon.png" rel="icon" type="image/png">
+
+    <!-- Basic Page Needs
+        ================================================== -->
+    <title>Instello Sharing Photos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Instello - Sharing Photos platform HTML Template">
+
+    <!-- icons
+        ================================================== -->
+    <link rel="stylesheet" href="/assets/css/icons.css">
+
+    <!-- CSS 
+        ================================================== -->
+    <link rel="stylesheet" href="/assets/css/uikit.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/tailwind.css">
+
+
+    <% include sidebar%>
+        <% include topheaders %>
+
+     
+</head>
+
+<body>
+
+
+    <div id="wrapper">
+
+
+
+        <div class="main_content">
+
+
+
+            <div class="container m-auto">
+
+                <h1 class="lg:text-2xl text-lg font-extrabold leading-none text-gray-900 tracking-tight mb-5"> New Suggestion   
+                </h1>
+
+                <div class="lg:flex justify-center lg:space-x-10 lg:space-y-0 space-y-5">
+
+                  
+                    <div class="space-y-5 flex-shrink-0 lg:w-7/12">
+
+                        <div class="bg-white dark:bg-gray-900 shadow-md rounded-md overflow-hidden">
+
+                            <div
+                                class="bg-gray-50 dark:bg-gray-800 border-b border-gray-100 flex items-baseline justify-between py-4 px-6 dark:border-gray-800">
+                                <h2 class="font-semibold text-lg">Suggestion</h2>
+                              
+                            </div>
+
+                            <% newUser.forEach(function(item,index){ %>
+                                <div
+                                    class="divide-gray-300 divide-gray-50 divide-opacity-50 divide-y px-4 dark:divide-gray-800 dark:text-gray-100">
+                                    <div class="flex items-center justify-between py-3">
+                                        <div class="flex flex-1 items-center space-x-4">
+                                            <a href="/watch_profile/<%=item._id%>">
+                                                <div class="flex">
+                                                <img src="images/<%=item.profile_pic%>"
+                                                    class="bg-gray-200 rounded-full w-10 h-10" style="margin-right: 20px!important;">
+                                            <div class="flex flex-col ml-6">
+                                                <span class="block capitalize font-semibold">
+                                                    <%= item.firstname +" "+ item.lastname%> </span>
+                                            <span class=" block capitalize text-sm"> Australia
+                                                </span>
+                                            </div>
+                                        </div>  
+                                            </a>
+                                        </div>
+                                        
+
+                                        <a href="/send_request/<%= item._id %>"
+                                            class="border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800">
+                                            Follow </a>
+                                    </div>
+
+                                </div>
+                            <%})%>
+                            <% followback.forEach(function(item,index){ %>
+                                <div
+                                    class="divide-gray-300 divide-gray-50 divide-opacity-50 divide-y px-4 dark:divide-gray-800 dark:text-gray-100">
+                                    <div class="flex items-center justify-between py-3">
+                                        <div class="flex flex-1 items-center space-x-4">
+                                            <a href="/watch_profile/<%=item._id%>">
+                                                <div class="flex">
+                                                <img src="images/<%=item.profile_pic%>"
+                                                    class="bg-gray-200 rounded-full w-10 h-10" style="margin-right: 20px!important;">
+                                            <div class="flex flex-col ml-6">
+                                                <span class="block capitalize font-semibold">
+                                                    <%= item.firstname +" "+ item.lastname%> </span>
+                                            <span class=" block capitalize text-sm"> Australia
+                                                </span>
+                                            </div>
+                                        </div>  
+                                            </a>
+                                        </div>
+
+                                        <a href="/send_request/<%= item._id %>"
+                                                class="border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800">
+                                                Follow Back </a>
+                                    </div>
+
+                                </div>
+
+                                <%})%>   
+                    
+                        </div>
+                       
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <script>
+
+        (function (window, document, undefined) {
+            'use strict';
+            if (!('localStorage' in window)) return;
+            var nightMode = localStorage.getItem('gmtNightMode');
+            if (nightMode) {
+                document.documentElement.className += ' dark';
+            }
+        })(window, document);
+
+
+        (function (window, document, undefined) {
+
+            'use strict';
+
+            // Feature test
+            if (!('localStorage' in window)) return;
+
+            // Get our newly insert toggle
+            var nightMode = document.querySelector('#night-mode');
+            if (!nightMode) return;
+
+            // When clicked, toggle night mode on or off
+            nightMode.addEventListener('click', function (event) {
+                event.preventDefault();
+                document.documentElement.classList.toggle('dark');
+                if (document.documentElement.classList.contains('dark')) {
+                    localStorage.setItem('gmtNightMode', true);
+                    return;
+                }
+                localStorage.removeItem('gmtNightMode');
+            }, false);
+
+        })(window, document);
+    </script>
+
+
+    <!-- Scripts
+    ================================================== -->
+    <script src="/assets/js/tippy.all.min.js"></script>
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/uikit.js"></script>
+    <script src="/assets/js/simplebar.js"></script>
+    <script src="/assets/js/custom.js"></script>
+
+
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+
+
+</body>
+
+</html>
