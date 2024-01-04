@@ -4,7 +4,6 @@ var jwt = require('jsonwebtoken');
 const postModel = require('../model/postModel');
 const commentsModel = require('../model/commentsModel');
 const chatModel = require('../model/chatModel');
-
 exports.Login = async (req, res) => {
   await storage.init();
   const uid = await storage.getItem('userid');
